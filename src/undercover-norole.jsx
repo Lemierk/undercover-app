@@ -62,7 +62,7 @@ const THEMES = {
       { civil: "Force de Mirroir", undercover: "Cylindre magique" },
       { civil: "Puzzle du Millenium", undercover: "L'anneau du Millenium" },
       { civil: "Domino city", undercover: "La duel académie" },
-      { civil: "Monstre XYZ", undercover: "Monstre Synchro" },
+      { civil: "Montre XYZ", undercover: "Monstre Synchro" },
       { civil: "Carte piège", undercover: "Carte magie" },
       { civil: "Monster Reborn", undercover: "Enterrement prématuré" },
       { civil: "Seto Kaiba", undercover: "Yami Yugi" },
@@ -641,25 +641,30 @@ function RevealScreen({ theme, players, currentReveal, setCurrentReveal, showWor
           fontSize: 22, fontFamily: "'Bangers', cursive", letterSpacing: 2,
           borderRadius: 8, cursor: "pointer", width: "100%",
           boxShadow: `0 0 20px ${theme.accent}50`, textTransform: "uppercase",
-        }}>👁️ VOIR MON RÔLE</button>
+        }}>👁️ VOIR MON MOT</button>
       ) : (
         <div className="word-reveal" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <div className={`card ${info.cls}`} style={{ textAlign: "center", padding: 28 }}>
-            <div style={{ fontSize: 40, marginBottom: 8 }}>{info.emoji}</div>
-            <div style={{ fontSize: 28, letterSpacing: 3, marginBottom: 4 }}>{info.label}</div>
-            <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 14, opacity: 0.8 }}>{info.desc}</div>
-          </div>
 
-          <div className="card" style={{ textAlign: "center", padding: 28, border: `1px solid ${theme.accent}30` }}>
-            <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Ton mot secret</div>
-            <div style={{
-              fontSize: player.word === "???" ? 56 : 38,
-              color: player.role === "undercover" ? "#f44336" : player.role === "mrwhite" ? "#ce93d8" : "#4caf50",
-              letterSpacing: 2, fontWeight: "bold",
-            }}>
-              {player.word}
+          {/* Mr. White sait qu'il est Mr. White — les autres voient juste leur mot */}
+          {player.role === "mrwhite" ? (
+            <div className="card role-badge-mrwhite" style={{ textAlign: "center", padding: 28 }}>
+              <div style={{ fontSize: 40, marginBottom: 8 }}>❓</div>
+              <div style={{ fontSize: 28, letterSpacing: 3, marginBottom: 4 }}>MR. WHITE</div>
+              <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 14, opacity: 0.8 }}>Tu ne sais rien... bluff !</div>
             </div>
-          </div>
+          ) : (
+            <div className="card" style={{ textAlign: "center", padding: 40, border: `1px solid ${theme.accent}30` }}>
+              <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>Ton mot secret</div>
+              <div style={{
+                fontSize: 42,
+                color: theme.accentText,
+                letterSpacing: 2, fontWeight: "bold",
+                textShadow: `0 0 20px ${theme.accent}80`,
+              }}>
+                {player.word}
+              </div>
+            </div>
+          )}
 
           <button onClick={() => {
             if (isLast) onDone();
