@@ -900,11 +900,13 @@ function RevealScreen({ theme, players, currentReveal, setCurrentReveal, showWor
 
   // Auto-skip bots après 1.5s
   useEffect(() => {
-    if (isBot) {
-      const t = setTimeout(() => next(), 1500);
-      return () => clearTimeout(t);
-    }
-  }, [currentReveal]);
+    if (!isBot) return;
+    const t = setTimeout(() => {
+      if (isLast) onDone();
+      else { setCurrentReveal(prev => prev + 1); setShowWord(false); }
+    }, 1500);
+    return () => clearTimeout(t);
+  }, [currentReveal, isLast, isBot]);
 
   return (
     <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: 20, paddingTop: 40, minHeight: "100vh" }}>
