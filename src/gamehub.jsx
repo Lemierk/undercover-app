@@ -1116,7 +1116,7 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
                         border: "1px solid rgba(100,200,255,0.3)",
                         color: "#60c8ff", borderRadius: 8, padding: "8px 14px",
                         fontFamily: "'Rajdhani', sans-serif", fontSize: 13,
-                        letterSpacing: 1, cursor: isLoading ? "wait" : "pointer",
+                        letterSpacing: 1, cursor: "pointer",
                         width: "100%", textTransform: "uppercase",
                       }}
                     >
