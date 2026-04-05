@@ -224,6 +224,270 @@ const THEMES = {
   },
 };
 
+
+// ─── BOT HINTS (pré-programmés par mot) ────────────────────────────────────────
+const BOT_HINTS = {
+  // DBZ
+  "Kamehameha": ["Énergie","Vague","Puissance","Rayon","Charge"],
+  "Genkidama": ["Sphère","Univers","Espoir","Énergie","Globe"],
+  "Super Saiyan": ["Doré","Transformation","Cheveux","Puissance","Éveil"],
+  "Super Saiyan 2": ["Éclairs","Évolution","Combat","Force","Aura"],
+  "Goku": ["Héros","Combat","Saiyan","Terre","Sourire"],
+  "Vegeta": ["Fierté","Prince","Rival","Élite","Orgueil"],
+  "C-17": ["Androïde","Jumeau","Nature","Rebelle","Métal"],
+  "C-16": ["Androïde","Paisible","Oiseau","Doux","Géant"],
+  "Dieu (Kami)": ["Gardien","Ciel","Namek","Ancien","Palais"],
+  "Dende": ["Soins","Namek","Jeune","Guérison","Vert"],
+  "Dragon Ball": ["Sphère","Vœu","Orange","Étoile","Quête"],
+  "Super Dragon Ball": ["Géant","Univers","Vœu","Rare","Puissant"],
+  "Kaioken": ["Rouge","Multiplication","Risque","Vitesse","Aura"],
+  "Oozaru": ["Singe","Lune","Transformation","Géant","Rugissement"],
+  "Freezer": ["Tyran","Glace","Espace","Cruel","Violet"],
+  "Cell": ["Parfait","Absorption","Insecte","Copie","Sombre"],
+  "Buu": ["Rose","Magie","Absorption","Enfantin","Chaos"],
+  "Janemba": ["Démon","Portail","Maléfique","Dimension","Étrange"],
+  "Bulma": ["Génie","Inventrice","Bleue","Capsule","Curieuse"],
+  "Chi-Chi": ["Mère","Stricte","Mariage","Cuisine","Protectrice"],
+  "Piccolo": ["Vert","Namek","Mentor","Sérieux","Cap"],
+  "Kami": ["Dieu","Ancien","Gardien","Séparé","Sage"],
+  "Shenron": ["Dragon","Vœu","Vert","Éternel","Invocation"],
+  "Porunga": ["Namek","Dragon","Grand","Trois","Vœux"],
+  "Beerus": ["Dieu","Destruction","Sommeil","Chat","Puissant"],
+  "Champa": ["Jumeau","Gros","Univers","Destruction","Jaloux"],
+  "Senzu": ["Haricot","Soin","Récupération","Précieux","Magie"],
+  "Karin": ["Chat","Tour","Haricot","Sage","Perché"],
+  "Tortue Géniale": ["Maître","Plage","Vieux","Dragueur","Kimono"],
+  "Tour Karin": ["Haute","Nuage","Ascension","Entraînement","Ciel"],
+  "Palais de Dieu": ["Nuage","Haut","Gardien","Blanc","Céleste"],
+  "Salle du temps": ["Année","Jour","Entraînement","Vide","Temps"],
+  "Chambre de gravité": ["Pesanteur","Entraînement","Capsule","Effort","Vegeta"],
+  "Gohan": ["Studieux","Potentiel","Fils","Lunettes","Calme"],
+  "Goten": ["Enfant","Ressemblance","Joueur","Fusion","Petit"],
+  "Trunks": ["Épée","Futur","Violet","Demi-Saiyan","Voyage"],
+  "Gotenks": ["Fusion","Enfants","Espiègle","Puissant","Caprice"],
+  "Makankosappo": ["Spirale","Percée","Piccolo","Doigts","Vrille"],
+  "Masenko": ["Énergie","Gohan","Jaune","Attaque","Front"],
+  "Tenshinhan": ["Troisième","Œil","Arts","Sérieux","Humain"],
+  "Yamcha": ["Désert","Cicatrice","Baseball","Faible","Loup"],
+  "Cell junior": ["Bleu","Mini","Violent","Clone","Petit"],
+  "Saibaiman": ["Vert","Explosion","Faible","Groupe","Plante"],
+  "Nappa": ["Chauve","Géant","Détruire","Végéta","Barbare"],
+  "Raditz": ["Cheveux","Frère","Traître","Longue","Saiyan"],
+
+  // Yu-Gi-Oh
+  "Magicien sombre": ["Violet","Bâton","Magie","Yugi","Fidèle"],
+  "Magicienne des ténébres": ["Féminin","Rose","Magie","Élève","Chapeau"],
+  "Dragon blanc aux yeux bleus": ["Blanc","Légendaire","Kaiba","Puissant","Rare"],
+  "Dragon noir aux yeux rouges": ["Noir","Potentiel","Joey","Feu","Rare"],
+  "Exodia": ["Interdit","Cinq","Pièces","Victoire","Ancien"],
+  "Exodia Necros": ["Sombre","Immortel","Maléfique","Rituel","Puissant"],
+  "Yugi Muto": ["Puzzle","Petit","Pharaon","Amitié","Champion"],
+  "Jaden Yuki": ["Héros","Académie","Fusion","Décontracté","Marron"],
+  "Pot de cupidité": ["Piocher","Deux","Cartes","Célèbre","Banni"],
+  "Pot d'Avarice": ["Cinq","Recycler","Deck","Mélanger","Puissant"],
+  "Force de Mirroir": ["Reflet","Défense","Piège","Attaque","Renvoyer"],
+  "Cylindre magique": ["Renvoyer","Dégâts","Piège","Rediriger","Classique"],
+  "Puzzle du Millenium": ["Or","Pyramide","Pharaon","Yugi","Ancien"],
+  "L'anneau du Millenium": ["Bakura","Blanc","Pointu","Ombre","Maléfique"],
+  "Domino city": ["Ville","Yugi","Japon","Tournoi","Moderne"],
+  "La duel académie": ["École","Île","Jaden","Formation","Uniforme"],
+  "Monstre XYZ": ["Rang","Superposition","Matériaux","Noir","Moderne"],
+  "Monstre Synchro": ["Accord","Blanc","Tuner","Niveau","Vitesse"],
+  "Carte piège": ["Retourné","Surprise","Défense","Embuscade","Piège"],
+  "Carte magie": ["Sort","Effet","Rapide","Terrain","Action"],
+  "Monster Reborn": ["Résurrection","Croix","Rappel","Cimetière","Classique"],
+  "Enterrement prématuré": ["Cimetière","Rappel","Coût","Équipement","Ancien"],
+  "Seto Kaiba": ["Arrogant","Bleu","Dragon","Rival","Riche"],
+  "Yami Yugi": ["Pharaon","Sombre","Stratège","Yeux","Ancien"],
+  "Pegasus": ["Œil","Millénium","Créateur","Blanc","Lecture"],
+  "Marek": ["Tige","Millénium","Contrôle","Blond","Égypte"],
+  "L'ile des duelistes": ["Château","Mer","Tournoi","Isolé","Pegasus"],
+  "Battle City": ["Tournoi","Ville","Grues","Kaiba","Semi-finals"],
+  "Obelisk le Tourmenteur": ["Bleu","Dieu","Géant","Kaiba","Égypte"],
+  "Le dragon ailé de Ra": ["Or","Dieu","Soleil","Égypte","Phénix"],
+  "Noa Kaiba": ["Virtuel","Enfant","Vert","Jaloux","Numérique"],
+  "Violent orage": ["Détruire","Magie","Terrain","Puissant","Nettoyer"],
+  "Tornade géante": ["Détruire","Magie","Piège","Rapide","Vent"],
+  "Trou noir": ["Détruire","Tous","Monstres","Classique","Noir"],
+  "Raigeki": ["Foudre","Détruire","Attaque","Ancien","Banni"],
+  "Cyber dragon": ["Machine","Blanc","Kaiba","Mécanique","Moderne"],
+  "Naga cyber": ["Serpent","Machine","Fusion","Mécanique","Long"],
+  "Avian héro élémentaire": ["Ailes","Vert","Héros","Vol","Jaden"],
+  "Sparkman héro élémentaire": ["Électricité","Bleu","Héros","Éclair","Jaden"],
+  "Néos héro élémentaire": ["Blanc","Espace","Jaden","Fusion","Puissant"],
+
+  // Pokémon
+  "Pikachu": ["Jaune","Électrique","Mascotte","Joues","Tonnerre"],
+  "Raichu": ["Évolution","Queue","Orange","Électrique","Adulte"],
+  "Poké Ball": ["Rouge","Capture","Rond","Blanc","Lancer"],
+  "Master Ball": ["Violet","Rare","Infaillible","Légendaire","Ultime"],
+  "Dresseur": ["Voyage","Équipe","Capture","Jeune","Aventure"],
+  "Champion": ["Titre","Arène","Combat","Victoire","Élite"],
+  "Attaque Tonnerre": ["Électrique","Pikachu","Rapide","Paralysie","Classique"],
+  "Fatal foudre": ["Puissant","Électrique","Risque","Légendaire","Ciel"],
+  "Gigamax": ["Géant","Moderne","Galar","Transformation","Rare"],
+  "Méga-Évolution": ["Pierre","Temporaire","Puissance","Bracelet","Combat"],
+  "Pokédex": ["Rouge","Données","Scanner","Informations","Encyclopédie"],
+  "PokéNav": ["Hoenn","Navigation","Carte","Rival","Moderne"],
+  "Arène": ["Combat","Médaille","Chef","Ville","Défi"],
+  "Ligue Pokémon": ["Élite","Quatre","Champion","Finale","Victoire"],
+  "IV": ["Statistique","Caché","Naissance","Valeur","Compétitif"],
+  "EV": ["Entraînement","Effort","Combat","Points","Compétitif"],
+  "Charge": ["Normal","Basique","Attaque","Foncer","Simple"],
+  "Tranche": ["Griffes","Coupant","Normal","Rapide","Attaque"],
+  "Centre Pokémon": ["Soins","Rose","Joelle","Gratuit","Repos"],
+  "Magasin Pokémon": ["Bleu","Acheter","Poké Ball","Objets","Ville"],
+  "Chenipan": ["Chenille","Vert","Bois","Faible","Premier"],
+  "Chrysacier": ["Cocon","Immobile","Transformation","Carapace","Attente"],
+  "Rondoudou": ["Rose","Chant","Sommeil","Micro","Gonflé"],
+  "Grodoudou": ["Gros","Sommeil","Chant","Évolution","Rose"],
+  "Bulbizarre": ["Plante","Bulbe","Vert","Starter","Kanto"],
+  "Herbizarre": ["Évolution","Plante","Fleur","Milieu","Vert"],
+  "Carapuce": ["Eau","Tortue","Bleu","Starter","Kanto"],
+  "Carabaffe": ["Évolution","Eau","Lunettes","Tortue","Milieu"],
+  "Salamèche": ["Feu","Queue","Orange","Starter","Kanto"],
+  "Reptincel": ["Feu","Évolution","Griffes","Milieu","Orange"],
+  "Dracolosse": ["Dragon","Puissant","Orange","Pseudo","Légendaire"],
+  "Dracaufeu": ["Feu","Vol","Starter","Flamme","Iconique"],
+  "Mewtwo": ["Clone","Légendaire","Psychique","Laboratoire","Puissant"],
+  "Mew": ["Rose","Rare","Originel","Mignon","Mythique"],
+  "Kanto": ["Première","Région","Nostalgique","Rouge","Bleu"],
+  "Jotho": ["Deuxième","Région","Or","Argent","Classique"],
+
+  // GOT
+  "Jon Snow": ["Noir","Bâtard","Mur","Résurrection","Loup"],
+  "Aegon Targaryen": ["Vrai","Nom","Secret","Targayren","Héritier"],
+  "Daenerys": ["Dragon","Blonde","Reine","Libératrice","Feu"],
+  "Rhaenyra": ["Héritière","Dragon","Conflit","Femme","Noire"],
+  "Lannister": ["Or","Lion","Dette","Riche","Jumeaux"],
+  "Baratheon": ["Cerf","Roi","Robert","Tempête","Noir"],
+  "Stark": ["Loup","Nord","Honneur","Hiver","Gris"],
+  "Tully": ["Rivière","Poisson","Fidélité","Famille","Bleue"],
+  "Trône de Fer": ["Épées","Pouvoir","Convoité","Danger","Acier"],
+  "Port Real": ["Capitale","Mer","Politique","Foule","Sud"],
+  "Dracarys": ["Feu","Dragon","Ordre","Brûler","Valyrien"],
+  "Valar Morghulis": ["Mort","Braavos","Faceless","Salutation","Destin"],
+  "Garde de Nuit": ["Noir","Mur","Serment","Froid","Honneur"],
+  "Manteau d'or": ["Soldat","Ville","Ordre","Joffrey","Jaune"],
+  "La Main du Roi": ["Conseiller","Broche","Pouvoir","Danger","Premier"],
+  "Le Conseil Restreint": ["Réunion","Pouvoir","Secret","Trahison","Conseillers"],
+  "Westeros": ["Continent","Royaumes","Guerre","Hiver","Carte"],
+  "Essos": ["Est","Libre","Cités","Exile","Daenerys"],
+  "Winterfell": ["Château","Nord","Stark","Froid","Ancestral"],
+  "Peyredragon": ["Île","Volcan","Targaryen","Noir","Forteresse"],
+  "Joffrey": ["Cruel","Jeune","Roi","Sadique","Blond"],
+  "Ramsay": ["Monstre","Nord","Bolton","Torture","Souriant"],
+  "Marcheur Blanc": ["Glace","Mort","Armée","Nuit","Yeux"],
+  "Sauvageons": ["Nord","Mur","Libre","Barbare","Libre"],
+  "Drogon": ["Noir","Grand","Daenerys","Feu","Dragon"],
+  "Viserion": ["Blanc","Mort","Glace","Dragon","Transformé"],
+  "Le Limier": ["Cicatrice","Chien","Brutal","Loyal","Feu"],
+  "La montagne": ["Géant","Brutal","Zombie","Armure","Fort"],
+  "Cersei": ["Blonde","Reine","Vengeance","Vin","Manipulatrice"],
+  "Margaery": ["Rose","Douce","Manipulation","Populaire","Jeune"],
+  "Arya": ["Épée","Vengeance","Liste","Petite","Masques"],
+  "Sansa": ["Rouge","Naïve","Apprentissage","Nord","Survivante"],
+  "Alicent": ["Verte","Reine","Mère","Conflit","Rivale"],
+  "Valyrien": ["Ancien","Acier","Dragon","Langue","Empire"],
+  "Targaryen": ["Dragon","Feu","Argent","Sang","Pouvoir"],
+  "Vagar": ["Dragon","Reine","Blanc","Grand","Rhaenyra"],
+  "Caraxes": ["Rouge","Serpent","Daemon","Dragon","Étrange"],
+  "Velaryon": ["Mer","Argent","Alliés","Bateau","Driftmark"],
+  "Deamon": ["Épée","Sombre","Targaryen","Imprévisible","Rebelle"],
+  "Aemond": ["Borgne","Vert","Vhagar","Froid","Sérieux"],
+  "Eddard Stark": ["Honneur","Tête","Nord","Exécution","Juste"],
+  "Robert Baratheon": ["Roi","Gros","Marteau","Alcool","Ancien"],
+
+  // Harry Potter
+  "Gryffondor": ["Rouge","Lion","Courage","Or","Brave"],
+  "Serdaigle": ["Bleu","Aigle","Intelligence","Bronze","Sagesse"],
+  "Serpentard": ["Vert","Serpent","Ambition","Argent","Ruse"],
+  "Poufsouffle": ["Jaune","Blaireau","Loyauté","Travail","Doux"],
+  "Poudlard": ["Château","École","Magie","Écosse","Mystère"],
+  "Pré-au-lard": ["Village","Bonbons","Butterbeer","Visite","Sortie"],
+  "Patronus": ["Animal","Lumière","Protection","Souvenir","Charme"],
+  "Horcruxe": ["Âme","Fragment","Immortalité","Sombre","Objet"],
+  "Expelliarmus": ["Désarmement","Rouge","Harry","Signature","Duel"],
+  "Stupefix": ["Paralysie","Rouge","Duel","Simple","Basique"],
+  "Avada Kedavra": ["Mort","Vert","Imparable","Maudit","Sombre"],
+  "Crucio": ["Torture","Douleur","Impardonnable","Sombre","Cri"],
+  "Baguette magique": ["Bois","Noyau","Outil","Choisit","Sort"],
+  "Balais volant": ["Quidditch","Ciel","Vitesse","Bois","Vol"],
+  "Quidditch": ["Sport","Balais","Vif","Sept","Équipe"],
+  "Echec": ["Sorcier","Pièces","Stratégie","Ron","Jeu"],
+  "Vif d'or": ["Doré","Rapide","Minuscule","Victoire","Ailes"],
+  "Cognard": ["Noir","Violent","Batte","Danger","Frapper"],
+  "Choixpeau": ["Chapeau","Tri","Chante","Décision","Vieux"],
+  "Cape d'invisibilité": ["Transparent","Cachette","Héritage","Harry","Rare"],
+  "Placard sous l'escalier": ["Petit","Sombre","Harry","Dursley","Enfance"],
+  "Chambre des secrets": ["Serpent","Basilic","Cachée","Deuxième","Sombre"],
+  "Potion de polynectar": ["Transformation","Cheveux","Apparence","Bubulles","Copie"],
+  "Potion de chance": ["Chance","Or","Liquide","Felix","Rare"],
+  "Détraqueur": ["Noir","Froid","Âme","Prison","Dépression"],
+  "Loup-garou": ["Pleine","Lune","Transformation","Lupin","Danger"],
+  "Dobby": ["Elfe","Libre","Chaussette","Loyal","Mort"],
+  "Créature": ["Elfe","Maison","Servitude","Magie","Domestique"],
+  "Mangemort": ["Sombre","Marque","Voldemort","Masque","Serviteur"],
+  "Auror": ["Policier","Magie","Sombre","Combat","Ordre"],
+  "Harry Potter": ["Cicatrice","Lunettes","Survivant","Éclair","Célèbre"],
+  "Neville Londubat": ["Maladroit","Plantes","Courage","Évolution","Rond"],
+  "Dumbledore": ["Sage","Barbe","Directeur","Puissant","Secret"],
+  "Grindelwald": ["Sombre","Rival","Ancien","Baguette","Européen"],
+  "Moldu": ["Non-magique","Ignorant","Normal","Ordinaire","Humain"],
+  "Cracmol": ["Mi-magique","Méprisé","Sang","Né","Humain"],
+  "Voie 9¾": ["Cachée","Quai","Mur","Train","Passage"],
+  "Poudlard Express": ["Train","Rouge","Vapeur","Voyage","Bonbons"],
+  "Carte du Marauders": ["Carte","Invisible","Empreintes","Espions","Secrets"],
+  "Miroir magique": ["Reflet","Désir","Danger","Piège","Illusion"],
+  "Hedwige": ["Blanche","Hibou","Courrier","Fidèle","Harry"],
+  "Croûtard": ["Rat","Faux","Trahison","Gris","Peter"],
+  "Nagini": ["Serpent","Voldemort","Géant","Horcruxe","Verte"],
+  "Le basilic": ["Serpent","Regard","Mortel","Géant","Chambre"],
+
+  // Star Wars
+  "Luke": ["Blond","Jedi","Fils","Ferme","Héros"],
+  "Anakin": ["Élu","Sombre","Père","Colère","Promesse"],
+  "Naboo": ["Planète","Reine","Padmé","Vert","Beau"],
+  "Endor": ["Forêt","Ewoks","Lune","Victoire","Vert"],
+  "Jedi": ["Sabre","Force","Sagesse","Temple","Lumière"],
+  "Sith": ["Sombre","Deux","Passion","Rouge","Maître"],
+  "La Force": ["Énergie","Invisible","Pouvoir","Vie","Liant"],
+  "Le côté obscur": ["Colère","Puissance","Tentation","Sombre","Chemin"],
+  "X-Wing": ["Rouge","Rebelle","Quatre","Ailes","Combat"],
+  "TIE Fighter": ["Noir","Empire","Deux","Ailes","Rapide"],
+  "L'Empire": ["Noir","Tyranie","Ordre","Stormtrooper","Contrôle"],
+  "L'Alliance Rebelle": ["Espoir","Résistance","Étoile","Combat","Liberté"],
+  "Étoile de la Mort": ["Sphère","Géant","Laser","Destruction","Empire"],
+  "Starkiller": ["Planète","Arme","Premier","Ordre","Détruire"],
+  "R2-D2": ["Bleu","Beep","Dôme","Fidèle","Petit"],
+  "C-3PO": ["Or","Protocole","Bavard","Humanoïde","Anxieux"],
+  "Sabre laser vert": ["Jedi","Maître","Yoda","Luke","Vert"],
+  "Sabre laser violet": ["Mace","Unique","Rare","Violet","Maître"],
+  "Kashyyyk": ["Wookiee","Forêt","Géant","Chewie","Arbre"],
+  "Dagobah": ["Marais","Yoda","Entraînement","Sombre","Isolé"],
+  "Tatouïne": ["Désert","Sable","Soleils","Luke","Pauvre"],
+  "Jakku": ["Désert","Rey","Épave","Abandonnée","Sable"],
+  "Coruscant": ["Capitale","Ville","Sénat","Lumières","Politique"],
+  "Ewok": ["Petit","Poilu","Forêt","Mignon","Tribu"],
+  "Jawa": ["Désert","Capuche","Droïde","Petit","Marchand"],
+  "Dark Maul": ["Tatouage","Deux","Lames","Silence","Rouge"],
+  "Compte Doku": ["Cape","Sabre","Courbe","Séparatiste","Ancien"],
+  "Sénat Galactique": ["Politique","Discours","Manipulation","Dôme","Votes"],
+  "Temple Jedi": ["Formation","Coruscant","Détruit","Ordre","Ancien"],
+  "Padawan": ["Apprenti","Tresse","Formation","Jeune","Jedi"],
+  "Inquisiteur": ["Chasseur","Sombre","Sabres","Tournant","Empire"],
+
+  // Fallback générique
+  "default": ["Mystère","Secret","Caché","Spécial","Unique"],
+};
+
+function getBotHintLocal(word, usedHints) {
+  const hints = BOT_HINTS[word] || BOT_HINTS["default"];
+  const available = hints.filter(h => !usedHints.includes(h));
+  const pool = available.length > 0 ? available : hints;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
 // ─── HELPERS ───────────────────────────────────────────────────────────────────
 function shuffle(arr) {
   const a = [...arr];
@@ -721,7 +985,6 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
   const [showRoles, setShowRoles] = useState(false);
   const [confirmReveal, setConfirmReveal] = useState(false);
   const [botHints, setBotHints] = useState({});
-  const [loadingBot, setLoadingBot] = useState(null);
   const [round, setRound] = useState(1);
 
   function newRound() {
@@ -738,32 +1001,13 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
   if (activeUC === 0 && activeMW === 0) gameStatus = "civil";
   else if (activeUC >= activeCivils) gameStatus = "undercover";
 
-  async function getBotHint(player, index) {
-    if (botHints[index] || loadingBot === index) return;
-    setLoadingBot(index);
-    try {
-      const usedHints = Object.values(botHints).map(h => h).join(", ");
-      const randomSeed = ["original", "créatif", "surprenant", "inattendu", "différent", "unique"][Math.floor(Math.random() * 6)];
-      const prompt = player.role === "mrwhite"
-        ? `Tu joues à Undercover. Tu es Mr. White : tu n'as aucun mot secret mais tu dois bluffer. Donne UN SEUL MOT vague en français. Sois ${randomSeed}.${usedHints ? ` Ne pas utiliser ces mots déjà donnés : ${usedHints}.` : ""} Réponds uniquement avec ce mot, rien d'autre.`
-        : `Tu joues à Undercover dans l'univers "${theme.label}". Ton mot secret est "${player.word}". Tu es ${player.role === "undercover" ? "l'undercover" : "un civil"}. Donne UN SEUL MOT en français qui évoque subtilement ton mot sans le dire. Sois ${randomSeed}.${usedHints ? ` Ne pas utiliser ces mots déjà donnés : ${usedHints}.` : ""} Si tu es undercover, sois prudent. Réponds uniquement avec ce mot, rien d'autre.`;
-
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 60,
-          messages: [{ role: "user", content: prompt }],
-        }),
-      });
-      const data = await res.json();
-      const hint = data.content?.[0]?.text?.trim() || "...";
-      setBotHints(prev => ({ ...prev, [index]: hint }));
-    } catch (e) {
-      setBotHints(prev => ({ ...prev, [index]: "Je réfléchis..." }));
-    }
-    setLoadingBot(null);
+  function getBotHint(player, index) {
+    if (botHints[index]) return;
+    const usedHints = Object.values(botHints);
+    const hint = player.role === "mrwhite"
+      ? ["Peut-être","Intéressant","Hmm","Spécial","Mystérieux","Curieux","Étrange","Disons"][Math.floor(Math.random() * 8)]
+      : getBotHintLocal(player.word, usedHints);
+    setBotHints(prev => ({ ...prev, [index]: hint }));
   }
 
   const BtnSecondary = ({ children, onClick, style = {} }) => (
@@ -820,8 +1064,6 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
           const isOut = eliminated.includes(i);
           const isBot = player.isBot;
           const hint = botHints[i];
-          const isLoading = loadingBot === i;
-
           return (
             <div key={i} style={{
               background: isOut ? "rgba(255,255,255,0.02)" : isBot ? "rgba(100,200,255,0.04)" : "rgba(255,255,255,0.06)",
@@ -867,9 +1109,8 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
                   ) : (
                     <button
                       onClick={() => getBotHint(player, i)}
-                      disabled={isLoading}
                       style={{
-                        background: isLoading ? "rgba(100,200,255,0.05)" : "rgba(100,200,255,0.1)",
+                        background: "rgba(100,200,255,0.1)",
                         border: "1px solid rgba(100,200,255,0.3)",
                         color: "#60c8ff", borderRadius: 8, padding: "8px 14px",
                         fontFamily: "'Rajdhani', sans-serif", fontSize: 13,
@@ -877,7 +1118,7 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
                         width: "100%", textTransform: "uppercase",
                       }}
                     >
-                      {isLoading ? "⏳ Génération de l'indice..." : "🤖 Obtenir l'indice du bot"}
+                      🤖 Obtenir l'indice du bot
                     </button>
                   )}
                 </div>
