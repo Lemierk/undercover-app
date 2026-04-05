@@ -900,11 +900,13 @@ function RevealScreen({ theme, players, currentReveal, setCurrentReveal, showWor
 
   // Auto-skip bots après 1.5s
   useEffect(() => {
-    if (isBot) {
-      const t = setTimeout(() => next(), 1500);
-      return () => clearTimeout(t);
-    }
-  }, [currentReveal]);
+    if (!isBot) return;
+    const t = setTimeout(() => {
+      if (isLast) onDone();
+      else { setCurrentReveal(prev => prev + 1); setShowWord(false); }
+    }, 1500);
+    return () => clearTimeout(t);
+  }, [currentReveal, isLast, isBot]);
 
   return (
     <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: 20, paddingTop: 40, minHeight: "100vh" }}>
@@ -1114,7 +1116,7 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
                         border: "1px solid rgba(100,200,255,0.3)",
                         color: "#60c8ff", borderRadius: 8, padding: "8px 14px",
                         fontFamily: "'Rajdhani', sans-serif", fontSize: 13,
-                        letterSpacing: 1, cursor: isLoading ? "wait" : "pointer",
+                        letterSpacing: 1, cursor: "pointer",
                         width: "100%", textTransform: "uppercase",
                       }}
                     >
