@@ -695,13 +695,13 @@ function ModeSelectScreen({ theme, onLocal, onRemote, onBack }) {
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap');`}</style>
       <div style={{ textAlign: "center" }}>
         <div style={{ fontSize: 72, marginBottom: 8 }}>{theme.emoji}</div>
-        <h1 style={{ fontSize: 56, letterSpacing: 4, margin: 0, lineHeight: 1, background: \`linear-gradient(135deg, \${theme.accent}, \${theme.accentText}, \${theme.accentAlt})\`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>UNDERCOVER</h1>
+        <h1 style={{ fontSize: 56, letterSpacing: 4, margin: 0, lineHeight: 1, background: `linear-gradient(135deg, ${theme.accent}, ${theme.accentText}, ${theme.accentAlt})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>UNDERCOVER</h1>
         <p style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", letterSpacing: 3, fontSize: 13, marginTop: 8, textTransform: "uppercase" }}>Choisis ton mode de jeu</p>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
         {/* Local */}
-        <div onClick={onLocal} style={{ background: \`\${theme.accent}10\`, border: \`2px solid \${theme.accent}60\`, borderRadius: 20, padding: "28px 24px", cursor: "pointer", textAlign: "center", transition: "all 0.2s" }}>
+        <div onClick={onLocal} style={{ background: `${theme.accent}10`, border: `2px solid ${theme.accent}60`, borderRadius: 20, padding: "28px 24px", cursor: "pointer", textAlign: "center", transition: "all 0.2s" }}>
           <div style={{ fontSize: 48, marginBottom: 8 }}>📱</div>
           <div style={{ fontSize: 28, letterSpacing: 2, color: theme.accentText }}>MODE LOCAL</div>
           <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#aaa", fontSize: 14, marginTop: 6 }}>
@@ -762,7 +762,7 @@ function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack 
       }
 
       const id = Math.random().toString(36).slice(2, 8).toUpperCase();
-      await db.doc(\`games/\${id}\`).set({
+      await db.doc(`games/${id}`).set({
         roles,
         theme: selectedThemeId,
         status: "waiting",
@@ -771,7 +771,7 @@ function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack 
       });
 
       const base = window.location.href.split("?")[0];
-      const links = roles.map((_, i) => \`\${base}?game=\${id}&player=\${i}\`);
+      const links = roles.map((_, i) => `${base}?game=${id}&player=${i}`);
       setGameId(id);
       setGameLinks(links);
     } catch(e) {
@@ -796,11 +796,11 @@ function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack 
       </div>
 
       {/* Theme selector */}
-      <div className="card" style={{ border: \`1px solid \${theme.accent}30\` }}>
+      <div className="card" style={{ border: `1px solid ${theme.accent}30` }}>
         <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 13, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>🎨 Thème</div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {Object.values(THEMES).map(th => (
-            <div key={th.id} onClick={() => setSelectedThemeId(th.id)} style={{ padding: "8px 14px", borderRadius: 10, cursor: "pointer", background: selectedThemeId === th.id ? \`\${th.accent}20\` : "rgba(255,255,255,0.04)", border: \`1px solid \${selectedThemeId === th.id ? th.accent : "rgba(255,255,255,0.1)"}\`, fontFamily: "'Rajdhani', sans-serif", fontSize: 13, color: selectedThemeId === th.id ? th.accentText : "#aaa", transition: "all 0.15s" }}>
+            <div key={th.id} onClick={() => setSelectedThemeId(th.id)} style={{ padding: "8px 14px", borderRadius: 10, cursor: "pointer", background: selectedThemeId === th.id ? `${th.accent}20` : "rgba(255,255,255,0.04)", border: `1px solid ${selectedThemeId === th.id ? th.accent : "rgba(255,255,255,0.1)"}`, fontFamily: "'Rajdhani', sans-serif", fontSize: 13, color: selectedThemeId === th.id ? th.accentText : "#aaa", transition: "all 0.15s" }}>
               {th.emoji} {th.label}
             </div>
           ))}
@@ -808,7 +808,7 @@ function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack 
       </div>
 
       {/* Players */}
-      <div className="card" style={{ border: \`1px solid \${theme.accent}30\` }}>
+      <div className="card" style={{ border: `1px solid ${theme.accent}30` }}>
         <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 13, letterSpacing: 2, marginBottom: 16, textTransform: "uppercase" }}>👥 Nombre de joueurs</div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <button className="counter-btn" onClick={() => setPlayerCount(Math.max(3, playerCount - 1))}>−</button>
@@ -858,7 +858,7 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
     (async () => {
       const db = await claude.use("db");
       if (!db) return;
-      unsub = db.doc(\`games/\${gameId}\`).onSnapshot(snap => {
+      unsub = db.doc(`games/${gameId}`).onSnapshot(snap => {
         if (snap.exists) setGameData(snap.data);
       });
     })();
@@ -867,19 +867,19 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
 
   async function startGame() {
     const db = await claude.use("db");
-    await db.doc(\`games/\${gameId}\`).update({ status: "playing" });
+    await db.doc(`games/${gameId}`).update({ status: "playing" });
   }
 
   async function toggleEliminate(i) {
     const db = await claude.use("db");
     const current = gameData?.eliminated || [];
     const next = current.includes(i) ? current.filter(x => x !== i) : [...current, i];
-    await db.doc(\`games/\${gameId}\`).update({ eliminated: next });
+    await db.doc(`games/${gameId}`).update({ eliminated: next });
   }
 
   async function revealRoles() {
     const db = await claude.use("db");
-    await db.doc(\`games/\${gameId}\`).update({ status: "revealed" });
+    await db.doc(`games/${gameId}`).update({ status: "revealed" });
     setShowRoles(true);
     setConfirmReveal(false);
   }
@@ -917,22 +917,22 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
 
       {/* Waiting phase: show links */}
       {status === "waiting" && (
-        <div className="card" style={{ border: \`1px solid \${theme.accent}30\` }}>
+        <div className="card" style={{ border: `1px solid ${theme.accent}30` }}>
           <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 13, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>📤 Envoie ces liens à chaque joueur</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {gameLinks.map((link, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "10px 12px" }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 16, letterSpacing: 1, color: theme.accentText }}>{roles[i]?.name || \`Joueur \${i+1}\`}</div>
+                  <div style={{ fontSize: 16, letterSpacing: 1, color: theme.accentText }}>{roles[i]?.name || `Joueur ${i+1}`}</div>
                   <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#666", fontSize: 11, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{link}</div>
                 </div>
-                <button onClick={() => copyLink(link, i)} style={{ background: copied === i ? "#4caf50" : \`\${theme.accent}20\`, border: \`1px solid \${copied === i ? "#4caf50" : theme.accent}\`, color: copied === i ? "#fff" : theme.accent, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontFamily: "'Bangers', cursive", fontSize: 13, letterSpacing: 1, whiteSpace: "nowrap", transition: "all 0.2s" }}>
+                <button onClick={() => copyLink(link, i)} style={{ background: copied === i ? "#4caf50" : `${theme.accent}20`, border: `1px solid ${copied === i ? "#4caf50" : theme.accent}`, color: copied === i ? "#fff" : theme.accent, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontFamily: "'Bangers', cursive", fontSize: 13, letterSpacing: 1, whiteSpace: "nowrap", transition: "all 0.2s" }}>
                   {copied === i ? "✓ COPIÉ" : "📋 COPIER"}
                 </button>
               </div>
             ))}
           </div>
-          <button onClick={startGame} style={{ background: \`linear-gradient(135deg, \${theme.accent}, \${theme.accentAlt})\`, color: "#000", border: "none", padding: "14px 32px", fontSize: 20, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase", marginTop: 16 }}>
+          <button onClick={startGame} style={{ background: `linear-gradient(135deg, ${theme.accent}, ${theme.accentAlt})`, color: "#000", border: "none", padding: "14px 32px", fontSize: 20, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase", marginTop: 16 }}>
             🎮 TOUT LE MONDE EST PRÊT — DÉMARRER
           </button>
         </div>
@@ -942,7 +942,7 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
       {(status === "playing" || status === "revealed") && (
         <>
           {gameStatus && (
-            <div className="word-reveal card" style={{ textAlign: "center", background: gameStatus === "civil" ? "rgba(76,175,80,0.1)" : "rgba(244,67,54,0.1)", border: \`2px solid \${gameStatus === "civil" ? "#4caf50" : "#f44336"}\`, padding: 24 }}>
+            <div className="word-reveal card" style={{ textAlign: "center", background: gameStatus === "civil" ? "rgba(76,175,80,0.1)" : "rgba(244,67,54,0.1)", border: `2px solid ${gameStatus === "civil" ? "#4caf50" : "#f44336"}`, padding: 24 }}>
               <div style={{ fontSize: 48 }}>{gameStatus === "civil" ? "🏆" : "💀"}</div>
               <div style={{ fontSize: 32, color: gameStatus === "civil" ? "#4caf50" : "#f44336", letterSpacing: 2 }}>
                 {gameStatus === "civil" ? "CIVILS GAGNENT !" : "UNDERCOVER GAGNE !"}
@@ -953,7 +953,7 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
           {/* Stats */}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
             {[{label:"Civils",count:activeCivils,color:"#4caf50"},{label:"Undercover",count:activeUC,color:"#f44336"},{label:"Mr. White",count:activeMW,color:"#9c27b0"}].filter(s=>s.count>0).map(s=>(
-              <div key={s.label} style={{ background: "rgba(255,255,255,0.05)", border: \`1px solid \${s.color}40\`, borderRadius: 8, padding: "8px 14px", textAlign: "center", fontFamily: "'Rajdhani', sans-serif" }}>
+              <div key={s.label} style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${s.color}40`, borderRadius: 8, padding: "8px 14px", textAlign: "center", fontFamily: "'Rajdhani', sans-serif" }}>
                 <div style={{ fontSize: 20, color: s.color, fontWeight: 700 }}>{s.count}</div>
                 <div style={{ fontSize: 11, color: "#888", textTransform: "uppercase" }}>{s.label}</div>
               </div>
@@ -965,7 +965,7 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
             {roles.map((player, i) => {
               const isOut = elim.includes(i);
               return (
-                <div key={i} onClick={() => toggleEliminate(i)} style={{ background: isOut ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.06)", border: isOut ? "1px solid rgba(255,255,255,0.05)" : \`1px solid \${theme.accent}30\`, borderRadius: 12, padding: "14px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", opacity: isOut ? 0.35 : 1, filter: isOut ? "grayscale(1)" : "none", transition: "all 0.2s" }}>
+                <div key={i} onClick={() => toggleEliminate(i)} style={{ background: isOut ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.06)", border: isOut ? "1px solid rgba(255,255,255,0.05)" : `1px solid ${theme.accent}30`, borderRadius: 12, padding: "14px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", opacity: isOut ? 0.35 : 1, filter: isOut ? "grayscale(1)" : "none", transition: "all 0.2s" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     <span style={{ fontSize: 28 }}>{isOut ? "💀" : theme.playerEmojis[i % theme.playerEmojis.length]}</span>
                     <div>
@@ -996,13 +996,13 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
               <p style={{ fontFamily: "'Rajdhani', sans-serif", color: "#ce93d8", fontSize: 15, margin: "0 0 16px" }}>Révéler met fin à la partie. Confirmer ?</p>
               <div style={{ display: "flex", gap: 12 }}>
                 <button style={{ flex: 1, background: "transparent", color: "#ce93d8", border: "2px solid #9c27b0", padding: "12px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={revealRoles}>✅ OUI</button>
-                <button style={{ flex: 1, background: "transparent", color: theme.accent, border: \`2px solid \${theme.accent}\`, padding: "12px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={() => setConfirmReveal(false)}>❌ NON</button>
+                <button style={{ flex: 1, background: "transparent", color: theme.accent, border: `2px solid ${theme.accent}`, padding: "12px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={() => setConfirmReveal(false)}>❌ NON</button>
               </div>
             </div>
           )}
 
           <div style={{ display: "flex", gap: 12 }}>
-            <button style={{ flex: 1, background: "transparent", color: theme.accent, border: \`2px solid \${theme.accent}\`, padding: "12px 24px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={onBack}>🏠 ACCUEIL</button>
+            <button style={{ flex: 1, background: "transparent", color: theme.accent, border: `2px solid ${theme.accent}`, padding: "12px 24px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={onBack}>🏠 ACCUEIL</button>
           </div>
         </>
       )}
@@ -1021,7 +1021,7 @@ function RemotePlayerScreen({ gameId, playerIndex }) {
     (async () => {
       const db = await claude.use("db");
       if (!db) { setLoading(false); return; }
-      unsub = db.doc(\`games/\${gameId}\`).onSnapshot(snap => {
+      unsub = db.doc(`games/${gameId}`).onSnapshot(snap => {
         setGameData(snap.exists ? snap.data : null);
         setLoading(false);
       });
@@ -1065,7 +1065,7 @@ function RemotePlayerScreen({ gameId, playerIndex }) {
 
       {/* Waiting */}
       {status === "waiting" && (
-        <div style={{ background: "rgba(255,255,255,0.04)", border: \`1px solid \${theme.accent}30\`, borderRadius: 16, padding: 32, textAlign: "center", width: "100%" }}>
+        <div style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${theme.accent}30`, borderRadius: 16, padding: 32, textAlign: "center", width: "100%" }}>
           <div style={{ fontSize: 48, marginBottom: 12 }}>⏳</div>
           <div style={{ fontSize: 24, color: theme.accentText, letterSpacing: 2 }}>En attente du démarrage...</div>
           <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 14, marginTop: 8 }}>L'hôte va lancer la partie</div>
@@ -1089,7 +1089,7 @@ function RemotePlayerScreen({ gameId, playerIndex }) {
               )}
             </div>
           ) : !wordRevealed ? (
-            <button onClick={() => setWordRevealed(true)} style={{ background: \`linear-gradient(135deg, \${theme.accent}, \${theme.accentAlt})\`, color: "#000", border: "none", padding: "20px 32px", fontSize: 24, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase", boxShadow: \`0 0 20px \${theme.accent}50\` }}>
+            <button onClick={() => setWordRevealed(true)} style={{ background: `linear-gradient(135deg, ${theme.accent}, ${theme.accentAlt})`, color: "#000", border: "none", padding: "20px 32px", fontSize: 24, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase", boxShadow: `0 0 20px ${theme.accent}50` }}>
               👁️ VOIR MON MOT
             </button>
           ) : (
@@ -1101,9 +1101,9 @@ function RemotePlayerScreen({ gameId, playerIndex }) {
                   <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#ce93d8", fontSize: 14 }}>Tu ne sais rien... bluff !</div>
                 </div>
               ) : (
-                <div style={{ background: "rgba(255,255,255,0.04)", border: \`2px solid \${theme.accent}60\`, borderRadius: 16, padding: 40, textAlign: "center" }}>
+                <div style={{ background: "rgba(255,255,255,0.04)", border: `2px solid ${theme.accent}60`, borderRadius: 16, padding: 40, textAlign: "center" }}>
                   <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>Ton mot secret</div>
-                  <div style={{ fontSize: 48, color: theme.accentText, letterSpacing: 2, fontWeight: "bold", textShadow: \`0 0 20px \${theme.accent}80\` }}>
+                  <div style={{ fontSize: 48, color: theme.accentText, letterSpacing: 2, fontWeight: "bold", textShadow: `0 0 20px ${theme.accent}80` }}>
                     {player.word}
                   </div>
                 </div>
