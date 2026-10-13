@@ -32,7 +32,7 @@ const THEMES = {
       { civil: "Shenron", undercover: "Porunga" },
       { civil: "Beerus", undercover: "Champa" },
       { civil: "Senzu", undercover: "Karin" },
-      { civil: "Tortue Géniale", undercover: "Maitre Karin" },
+      { civil: "Tortue Géniale", undercover: "Karin" },
       { civil: "Tour Karin", undercover: "Palais de Dieu" },
       { civil: "Salle du temps", undercover: "Chambre de gravité" },
       { civil: "Gohan", undercover: "Goten" },
@@ -41,18 +41,6 @@ const THEMES = {
       { civil: "Tenshinhan", undercover: "Yamcha" },
       { civil: "Cell junior", undercover: "Saibaiman" },
       { civil: "Nappa", undercover: "Raditz" },
-      { civil: "Kaio Shin", undercover: "Beerus" },
-      { civil: "Namek", undercover: "Porunga" },
-      { civil: "Planète Vegeta", undercover: "Namek" },
-      { civil: "Dabra", undercover: "Buu" },
-      { civil: "Janemba", undercover: "Hildegarde" },
-	  { civil: "Tapion", undercover: "Trunks" },
-      { civil: "Vegeto", undercover: "Gogeta" },
-	  { civil: "Broly", undercover: "Gohan" },
-	  { civil: "Plume", undercover: "Oolong" },
-	  { civil: "Buu", undercover: "Uub" },
-	  { civil: "Bardock", undercover: "Thales" },
-	  { civil: "Cooler", undercover: "Roi Cold" },
     ],
   },
 
@@ -90,25 +78,6 @@ const THEMES = {
       { civil: "Cyber dragon", undercover: "Naga cyber" },
       { civil: "Avian héro élémentaire", undercover: "Sparkman héro élémentaire" },
       { civil: "Néos héro élémentaire", undercover: "Magicien sombre" },
-	  { civil: "GX", undercover: "5D's" },
-	  { civil: "Format GOAT", undercover: "Format EDISON" },
-	  { civil: "Dragon", undercover: "Magicien" },
-	  { civil: "Obelisk le Tourmenteur", undercover: "Exodia" },
-	  { civil: "Joey", undercover: "Mai" },
-	  { civil: "Duel disk", undercover: "Hologramme" },
-	  { civil: "Marek", undercover: "Bakura" },
-	  { civil: "Ténèbre", undercover: "Terre" },
-	  { civil: "Roïd", undercover: "Ojama" },
-	  { civil: "Gorz", undercover: "Tragoedia" },
-	  { civil: "OTK", undercover: "FTK" },
-	  { civil: "Main phase", undercover: "Battle phase" },
-	  { civil: "Ban liste", undercover: "Nouvelle extension" },
-	  { civil: "Magie continue", undercover: "Piège continu" },
-	  { civil: "Sleeves", undercover: "Playmat" },
-	  { civil: "WCQ", undercover: "YCS" },
-	  { civil: "Mitsurugi", undercover: "Maliss" },
-
-
     ],
   },
 
@@ -136,37 +105,13 @@ const THEMES = {
       { civil: "Charge", undercover: "Tranche" },
       { civil: "Centre Pokémon", undercover: "Magasin Pokémon" },
       { civil: "Chenipan", undercover: "Chrysacier" },
-      { civil: "Rondoudou", undercover: "Mélofée" },
+      { civil: "Rondoudou", undercover: "Grodoudou" },
       { civil: "Bulbizarre", undercover: "Herbizarre" },
       { civil: "Carapuce", undercover: "Carabaffe" },
       { civil: "Salamèche", undercover: "Reptincel" },
       { civil: "Dracolosse", undercover: "Dracaufeu" },
       { civil: "Mewtwo", undercover: "Mew" },
       { civil: "Kanto", undercover: "Jotho" },
-	  { civil: "Aspicot", undercover: "Cheniti" },
-	  { civil: "Tortank", undercover: "Léviator" },
-	  { civil: "Tauros", undercover: "Kangourex" },
-	  { civil: "Alola", undercover: "Galar" },
-	  { civil: "Chenipan", undercover: "Cheniti" },
-	  { civil: "Ectoplasma", undercover: "Lugulabre" },
-	  { civil: "Dialga", undercover: "Melmetal" },
-	  { civil: "Palkia", undercover: "Kyogre" },
-	  { civil: "Rayquaza", undercover: "Chenipan" },
-	  { civil: "Ronflex", undercover: "Monaflèmit" },
-	  { civil: "Métalosse", undercover: "Drattak" },
-	  { civil: "Keckleon", undercover: "Queulorior" },
-	  { civil: "Zorua", undercover: "Métamorph" },
-	  { civil: "Aquali", undercover: "Nymphali" },
-	  { civil: "Shaymin", undercover: "Célébi" },
-	  { civil: "Ho-Oh", undercover: "Sulfura" },
-	  { civil: "Arcanin", undercover: "Entei" },
-	  { civil: "Regidrago", undercover: "Registeel" },
-	  { civil: "Courronsinge", undercover: "Scalpereur" },
-	  { civil: "Mew", undercover: "Jirachi" },
-	  { civil: "Mewtwo", undercover: "Deoxys" },
-	  { civil: "Bétochef", undercover: "Mackogneur" },
-	  { civil: "Pikachu", undercover: "Miaouss" },
-	  { civil: "Gardevoir", undercover: "Lockpin" },
     ],
   },
 
@@ -555,7 +500,7 @@ function shuffle(arr) {
 
 // ─── APP ───────────────────────────────────────────────────────────────────────
 function UndercoverApp({ onBack }) {
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("modeSelect");
   const [selectedThemeId, setSelectedThemeId] = useState("dbz");
   const [playerCount, setPlayerCount] = useState(5);
   const [undercoverCount, setUndercoverCount] = useState(1);
@@ -603,11 +548,28 @@ function UndercoverApp({ onBack }) {
       return { name: shuffledChars[i], role, word, isBot };
     });
 
+    // S'assurer que le joueur 0 n'est pas Mr. White
+    // Si c'est le cas, on échange avec le premier non-Mr. White
+    if (roles[0]?.role === "mrwhite") {
+      const swapIdx = roles.findIndex((r, i) => i > 0 && r.role !== "mrwhite");
+      if (swapIdx !== -1) {
+        [roles[0], roles[swapIdx]] = [roles[swapIdx], roles[0]];
+      }
+    }
+
     setPlayers(roles);
     setCurrentReveal(0);
     setShowWord(false);
     setScreen("reveal");
   }
+
+  // Mode: local | remote | null (not chosen yet)
+  if (screen === "modeSelect") return (
+    <ModeSelectScreen theme={theme} onLocal={() => setScreen("home")} onRemote={() => setScreen("remoteSetup")} onBack={onBack} />
+  );
+  if (screen === "remoteSetup") return (
+    <RemoteSetupScreen theme={theme} selectedThemeId={selectedThemeId} setSelectedThemeId={setSelectedThemeId} onBack={() => setScreen("modeSelect")} />
+  );
 
   return (
     <div style={{
@@ -693,7 +655,7 @@ function UndercoverApp({ onBack }) {
         }}>{p.char}</div>
       ))}
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 430, margin: "0 auto", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <div style={{ position: "relative", zIndex: 1, minHeight: "100vh", display: "flex", flexDirection: "column" }}>
         {screen === "home" && (
           <HomeScreen theme={theme} selectedThemeId={selectedThemeId} setSelectedThemeId={setSelectedThemeId} onStart={() => setScreen("setup")} onBack={onBack} />
         )}
@@ -721,6 +683,447 @@ function UndercoverApp({ onBack }) {
             onRestart={() => setScreen("home")} onNewGame={startGame}
           />
         )}
+      </div>
+    </div>
+  );
+}
+
+// ─── MODE SELECT ──────────────────────────────────────────────────────────────
+function ModeSelectScreen({ theme, onLocal, onRemote, onBack }) {
+  return (
+    <div style={{ minHeight: "100vh", background: theme.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, gap: 28, fontFamily: "'Bangers', cursive", color: "#fff" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap');`}</style>
+      <div style={{ textAlign: "center" }}>
+        <div style={{ fontSize: 72, marginBottom: 8 }}>{theme.emoji}</div>
+        <h1 style={{ fontSize: 56, letterSpacing: 4, margin: 0, lineHeight: 1, background: \`linear-gradient(135deg, \${theme.accent}, \${theme.accentText}, \${theme.accentAlt})\`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>UNDERCOVER</h1>
+        <p style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", letterSpacing: 3, fontSize: 13, marginTop: 8, textTransform: "uppercase" }}>Choisis ton mode de jeu</p>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
+        {/* Local */}
+        <div onClick={onLocal} style={{ background: \`\${theme.accent}10\`, border: \`2px solid \${theme.accent}60\`, borderRadius: 20, padding: "28px 24px", cursor: "pointer", textAlign: "center", transition: "all 0.2s" }}>
+          <div style={{ fontSize: 48, marginBottom: 8 }}>📱</div>
+          <div style={{ fontSize: 28, letterSpacing: 2, color: theme.accentText }}>MODE LOCAL</div>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#aaa", fontSize: 14, marginTop: 6 }}>
+            Un seul téléphone — on se le passe à tour de rôle
+          </div>
+        </div>
+
+        {/* Remote */}
+        <div onClick={onRemote} style={{ background: "rgba(56,189,248,0.08)", border: "2px solid rgba(56,189,248,0.4)", borderRadius: 20, padding: "28px 24px", cursor: "pointer", textAlign: "center", transition: "all 0.2s" }}>
+          <div style={{ fontSize: 48, marginBottom: 8 }}>🌐</div>
+          <div style={{ fontSize: 28, letterSpacing: 2, color: "#7dd3fc" }}>MODE DISTANCE</div>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#aaa", fontSize: 14, marginTop: 6 }}>
+            Chaque joueur sur son propre téléphone — jouez partout
+          </div>
+        </div>
+      </div>
+
+      <button onClick={onBack} style={{ background: "transparent", color: "#666", border: "1px solid rgba(255,255,255,0.1)", padding: "12px", fontSize: 16, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase" }}>← MENU PRINCIPAL</button>
+    </div>
+  );
+}
+
+// ─── REMOTE SETUP ─────────────────────────────────────────────────────────────
+function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack }) {
+  const [playerCount, setPlayerCount] = useState(4);
+  const [undercoverCount, setUndercoverCount] = useState(1);
+  const [mrWhite, setMrWhite] = useState(false);
+  const [gameId, setGameId] = useState(null);
+  const [gameLinks, setGameLinks] = useState([]);
+  const [creating, setCreating] = useState(false);
+  const themes = { dbz: THEMES.dbz, yugioh: THEMES.yugioh, pokemon: THEMES.pokemon, got: THEMES.got, harrypotter: THEMES.harrypotter, starwars: THEMES.starwars };
+  const t = themes[selectedThemeId];
+  const maxUndercover = Math.floor((playerCount - (mrWhite ? 1 : 0)) / 2);
+  const safeUC = Math.min(undercoverCount, maxUndercover);
+
+  async function createGame() {
+    setCreating(true);
+    try {
+      const db = await claude.use("db");
+      if (!db) { alert("Service indisponible"); setCreating(false); return; }
+
+      const pair = t.pairs[Math.floor(Math.random() * t.pairs.length)];
+      const chars = shuffle([...t.characters]).slice(0, playerCount);
+      const indices = shuffle(Array.from({ length: playerCount }, (_, i) => i));
+      const undercoverIndices = indices.slice(0, safeUC);
+      const mrWhiteIndex = mrWhite ? indices[safeUC] : -1;
+
+      const roles = Array.from({ length: playerCount }, (_, i) => {
+        const role = undercoverIndices.includes(i) ? "undercover" : i === mrWhiteIndex ? "mrwhite" : "civil";
+        const word = role === "undercover" ? pair.undercover : role === "mrwhite" ? "???" : pair.civil;
+        return { name: chars[i], role, word };
+      });
+
+      // Ensure player 0 is not Mr. White
+      if (roles[0]?.role === "mrwhite") {
+        const swapIdx = roles.findIndex((r, i) => i > 0 && r.role !== "mrwhite");
+        if (swapIdx !== -1) [roles[0], roles[swapIdx]] = [roles[swapIdx], roles[0]];
+      }
+
+      const id = Math.random().toString(36).slice(2, 8).toUpperCase();
+      await db.doc(\`games/\${id}\`).set({
+        roles,
+        theme: selectedThemeId,
+        status: "waiting",
+        eliminated: [],
+        createdAt: Date.now(),
+      });
+
+      const base = window.location.href.split("?")[0];
+      const links = roles.map((_, i) => \`\${base}?game=\${id}&player=\${i}\`);
+      setGameId(id);
+      setGameLinks(links);
+    } catch(e) {
+      console.error(e);
+      alert("Erreur lors de la création");
+    }
+    setCreating(false);
+  }
+
+  if (gameId) return <RemoteHostScreen gameId={gameId} gameLinks={gameLinks} theme={t} onBack={onBack} />;
+
+  return (
+    <div style={{ minHeight: "100vh", background: theme.bg, fontFamily: "'Bangers', cursive", color: "#fff", padding: 24, display: "flex", flexDirection: "column", gap: 20, paddingTop: 48 }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap'); .card{background:rgba(255,255,255,0.04);border-radius:16px;padding:24px;backdrop-filter:blur(10px);} .counter-btn{width:44px;height:44px;border-radius:8px;font-size:24px;cursor:pointer;font-family:'Bangers',cursive;transition:all 0.15s;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#fff;}`}</style>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <button onClick={onBack} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "#888", borderRadius: 8, padding: "8px 14px", cursor: "pointer", fontFamily: "'Bangers', cursive", fontSize: 16 }}>←</button>
+        <div>
+          <h2 style={{ fontSize: 32, margin: 0, color: "#7dd3fc", letterSpacing: 3 }}>MODE DISTANCE</h2>
+          <p style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", margin: 0, fontSize: 12, letterSpacing: 2, textTransform: "uppercase" }}>Configuration de la partie</p>
+        </div>
+      </div>
+
+      {/* Theme selector */}
+      <div className="card" style={{ border: \`1px solid \${theme.accent}30\` }}>
+        <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 13, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>🎨 Thème</div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {Object.values(THEMES).map(th => (
+            <div key={th.id} onClick={() => setSelectedThemeId(th.id)} style={{ padding: "8px 14px", borderRadius: 10, cursor: "pointer", background: selectedThemeId === th.id ? \`\${th.accent}20\` : "rgba(255,255,255,0.04)", border: \`1px solid \${selectedThemeId === th.id ? th.accent : "rgba(255,255,255,0.1)"}\`, fontFamily: "'Rajdhani', sans-serif", fontSize: 13, color: selectedThemeId === th.id ? th.accentText : "#aaa", transition: "all 0.15s" }}>
+              {th.emoji} {th.label}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Players */}
+      <div className="card" style={{ border: \`1px solid \${theme.accent}30\` }}>
+        <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 13, letterSpacing: 2, marginBottom: 16, textTransform: "uppercase" }}>👥 Nombre de joueurs</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <button className="counter-btn" onClick={() => setPlayerCount(Math.max(3, playerCount - 1))}>−</button>
+          <span style={{ fontSize: 52, color: theme.accentText }}>{playerCount}</span>
+          <button className="counter-btn" onClick={() => setPlayerCount(Math.min(12, playerCount + 1))}>+</button>
+        </div>
+      </div>
+
+      {/* Undercovers */}
+      <div className="card" style={{ border: "1px solid rgba(244,67,54,0.3)" }}>
+        <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#f44336", fontSize: 13, letterSpacing: 2, marginBottom: 16, textTransform: "uppercase" }}>🕵️ Undercovers</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <button className="counter-btn" onClick={() => setUndercoverCount(Math.max(1, safeUC - 1))}>−</button>
+          <span style={{ fontSize: 52, color: "#f44336" }}>{safeUC}</span>
+          <button className="counter-btn" onClick={() => setUndercoverCount(Math.min(maxUndercover, safeUC + 1))}>+</button>
+        </div>
+      </div>
+
+      {/* Mr White */}
+      <div className="card" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", border: "1px solid rgba(156,39,176,0.3)" }}>
+        <div>
+          <div style={{ fontSize: 20, marginBottom: 4 }}>🤷 Mr. White</div>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 13 }}>Un joueur sans aucun mot</div>
+        </div>
+        <div onClick={() => setMrWhite(!mrWhite)} style={{ width: 56, height: 30, borderRadius: 15, background: mrWhite ? "linear-gradient(135deg, #7b1fa2, #9c27b0)" : "rgba(255,255,255,0.1)", border: mrWhite ? "1px solid #ce93d8" : "1px solid rgba(255,255,255,0.2)", cursor: "pointer", position: "relative", transition: "all 0.3s" }}>
+          <div style={{ position: "absolute", top: 3, left: mrWhite ? 28 : 3, width: 22, height: 22, borderRadius: "50%", background: mrWhite ? "#e1bee7" : "#666", transition: "all 0.3s" }} />
+        </div>
+      </div>
+
+      <button onClick={createGame} disabled={creating} style={{ background: "linear-gradient(135deg, #38bdf8, #0ea5e9)", color: "#000", border: "none", padding: "16px 32px", fontSize: 22, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: creating ? "wait" : "pointer", width: "100%", textTransform: "uppercase", opacity: creating ? 0.7 : 1 }}>
+        {creating ? "⏳ CRÉATION..." : "🌐 CRÉER LA PARTIE"}
+      </button>
+    </div>
+  );
+}
+
+// ─── REMOTE HOST ──────────────────────────────────────────────────────────────
+function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
+  const [gameData, setGameData] = useState(null);
+  const [copied, setCopied] = useState(null);
+  const [showRoles, setShowRoles] = useState(false);
+  const [confirmReveal, setConfirmReveal] = useState(false);
+  const [eliminated, setEliminated] = useState([]);
+
+  useEffect(() => {
+    let unsub;
+    (async () => {
+      const db = await claude.use("db");
+      if (!db) return;
+      unsub = db.doc(\`games/\${gameId}\`).onSnapshot(snap => {
+        if (snap.exists) setGameData(snap.data);
+      });
+    })();
+    return () => unsub?.();
+  }, [gameId]);
+
+  async function startGame() {
+    const db = await claude.use("db");
+    await db.doc(\`games/\${gameId}\`).update({ status: "playing" });
+  }
+
+  async function toggleEliminate(i) {
+    const db = await claude.use("db");
+    const current = gameData?.eliminated || [];
+    const next = current.includes(i) ? current.filter(x => x !== i) : [...current, i];
+    await db.doc(\`games/\${gameId}\`).update({ eliminated: next });
+  }
+
+  async function revealRoles() {
+    const db = await claude.use("db");
+    await db.doc(\`games/\${gameId}\`).update({ status: "revealed" });
+    setShowRoles(true);
+    setConfirmReveal(false);
+  }
+
+  function copyLink(link, i) {
+    navigator.clipboard.writeText(link).then(() => {
+      setCopied(i);
+      setTimeout(() => setCopied(null), 2000);
+    });
+  }
+
+  const roles = gameData?.roles || [];
+  const status = gameData?.status || "waiting";
+  const elim = gameData?.eliminated || eliminated;
+  const activePlayers = roles.filter((_, i) => !elim.includes(i));
+  const activeUC = activePlayers.filter(p => p.role === "undercover").length;
+  const activeCivils = activePlayers.filter(p => p.role === "civil").length;
+  const activeMW = activePlayers.filter(p => p.role === "mrwhite").length;
+  let gameStatus = null;
+  if (activeUC === 0 && activeMW === 0) gameStatus = "civil";
+  else if (activeUC >= activeCivils) gameStatus = "undercover";
+
+  return (
+    <div style={{ minHeight: "100vh", background: theme.bg, fontFamily: "'Bangers', cursive", color: "#fff", padding: "24px", paddingTop: 40, display: "flex", flexDirection: "column", gap: 16 }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap'); .card{background:rgba(255,255,255,0.04);border-radius:16px;padding:20px;backdrop-filter:blur(10px);} .word-reveal{animation:zoomIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;} @keyframes zoomIn{from{transform:scale(0.5);opacity:0;}to{transform:scale(1);opacity:1;}}`}</style>
+
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <button onClick={onBack} style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.15)", color: "#888", borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontFamily: "'Bangers', cursive", fontSize: 14 }}>← MENU</button>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: 22, color: theme.accentText, letterSpacing: 2 }}>🌐 HÔTE</div>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 11, letterSpacing: 2 }}>CODE : {gameId}</div>
+        </div>
+        <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 12 }}>{theme.emoji} {theme.label}</div>
+      </div>
+
+      {/* Waiting phase: show links */}
+      {status === "waiting" && (
+        <div className="card" style={{ border: \`1px solid \${theme.accent}30\` }}>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif", color: theme.accent, fontSize: 13, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>📤 Envoie ces liens à chaque joueur</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {gameLinks.map((link, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "10px 12px" }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 16, letterSpacing: 1, color: theme.accentText }}>{roles[i]?.name || \`Joueur \${i+1}\`}</div>
+                  <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#666", fontSize: 11, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{link}</div>
+                </div>
+                <button onClick={() => copyLink(link, i)} style={{ background: copied === i ? "#4caf50" : \`\${theme.accent}20\`, border: \`1px solid \${copied === i ? "#4caf50" : theme.accent}\`, color: copied === i ? "#fff" : theme.accent, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontFamily: "'Bangers', cursive", fontSize: 13, letterSpacing: 1, whiteSpace: "nowrap", transition: "all 0.2s" }}>
+                  {copied === i ? "✓ COPIÉ" : "📋 COPIER"}
+                </button>
+              </div>
+            ))}
+          </div>
+          <button onClick={startGame} style={{ background: \`linear-gradient(135deg, \${theme.accent}, \${theme.accentAlt})\`, color: "#000", border: "none", padding: "14px 32px", fontSize: 20, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase", marginTop: 16 }}>
+            🎮 TOUT LE MONDE EST PRÊT — DÉMARRER
+          </button>
+        </div>
+      )}
+
+      {/* Playing phase */}
+      {(status === "playing" || status === "revealed") && (
+        <>
+          {gameStatus && (
+            <div className="word-reveal card" style={{ textAlign: "center", background: gameStatus === "civil" ? "rgba(76,175,80,0.1)" : "rgba(244,67,54,0.1)", border: \`2px solid \${gameStatus === "civil" ? "#4caf50" : "#f44336"}\`, padding: 24 }}>
+              <div style={{ fontSize: 48 }}>{gameStatus === "civil" ? "🏆" : "💀"}</div>
+              <div style={{ fontSize: 32, color: gameStatus === "civil" ? "#4caf50" : "#f44336", letterSpacing: 2 }}>
+                {gameStatus === "civil" ? "CIVILS GAGNENT !" : "UNDERCOVER GAGNE !"}
+              </div>
+            </div>
+          )}
+
+          {/* Stats */}
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+            {[{label:"Civils",count:activeCivils,color:"#4caf50"},{label:"Undercover",count:activeUC,color:"#f44336"},{label:"Mr. White",count:activeMW,color:"#9c27b0"}].filter(s=>s.count>0).map(s=>(
+              <div key={s.label} style={{ background: "rgba(255,255,255,0.05)", border: \`1px solid \${s.color}40\`, borderRadius: 8, padding: "8px 14px", textAlign: "center", fontFamily: "'Rajdhani', sans-serif" }}>
+                <div style={{ fontSize: 20, color: s.color, fontWeight: 700 }}>{s.count}</div>
+                <div style={{ fontSize: 11, color: "#888", textTransform: "uppercase" }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Player list */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {roles.map((player, i) => {
+              const isOut = elim.includes(i);
+              return (
+                <div key={i} onClick={() => toggleEliminate(i)} style={{ background: isOut ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.06)", border: isOut ? "1px solid rgba(255,255,255,0.05)" : \`1px solid \${theme.accent}30\`, borderRadius: 12, padding: "14px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", opacity: isOut ? 0.35 : 1, filter: isOut ? "grayscale(1)" : "none", transition: "all 0.2s" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <span style={{ fontSize: 28 }}>{isOut ? "💀" : theme.playerEmojis[i % theme.playerEmojis.length]}</span>
+                    <div>
+                      <div style={{ fontSize: 20, letterSpacing: 1, textDecoration: isOut ? "line-through" : "none", color: isOut ? "#666" : "#fff" }}>{player.name}</div>
+                      {(showRoles || status === "revealed") && (
+                        <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: 13, color: player.role === "undercover" ? "#f44336" : player.role === "mrwhite" ? "#ce93d8" : "#4caf50", marginTop: 2 }}>
+                          {player.role === "undercover" ? "🕵️ UNDERCOVER" : player.role === "mrwhite" ? "❓ MR. WHITE" : "✅ CIVIL"} — {player.word}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 12, color: isOut ? "#555" : theme.accent, fontFamily: "'Rajdhani', sans-serif", letterSpacing: 1 }}>
+                    {isOut ? "ÉLIMINÉ" : "ACTIF"}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {!showRoles && status !== "revealed" && (
+            <button style={{ background: "transparent", color: "#ce93d8", border: "2px solid #9c27b0", padding: "12px 24px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase" }} onClick={() => setConfirmReveal(true)}>
+              🔍 RÉVÉLER LES RÔLES
+            </button>
+          )}
+
+          {confirmReveal && (
+            <div className="card word-reveal" style={{ textAlign: "center", background: "rgba(156,39,176,0.1)", border: "1px solid #9c27b0" }}>
+              <p style={{ fontFamily: "'Rajdhani', sans-serif", color: "#ce93d8", fontSize: 15, margin: "0 0 16px" }}>Révéler met fin à la partie. Confirmer ?</p>
+              <div style={{ display: "flex", gap: 12 }}>
+                <button style={{ flex: 1, background: "transparent", color: "#ce93d8", border: "2px solid #9c27b0", padding: "12px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={revealRoles}>✅ OUI</button>
+                <button style={{ flex: 1, background: "transparent", color: theme.accent, border: \`2px solid \${theme.accent}\`, padding: "12px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={() => setConfirmReveal(false)}>❌ NON</button>
+              </div>
+            </div>
+          )}
+
+          <div style={{ display: "flex", gap: 12 }}>
+            <button style={{ flex: 1, background: "transparent", color: theme.accent, border: \`2px solid \${theme.accent}\`, padding: "12px 24px", fontSize: 18, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", textTransform: "uppercase" }} onClick={onBack}>🏠 ACCUEIL</button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ─── REMOTE PLAYER ────────────────────────────────────────────────────────────
+function RemotePlayerScreen({ gameId, playerIndex }) {
+  const [gameData, setGameData] = useState(null);
+  const [wordRevealed, setWordRevealed] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let unsub;
+    (async () => {
+      const db = await claude.use("db");
+      if (!db) { setLoading(false); return; }
+      unsub = db.doc(\`games/\${gameId}\`).onSnapshot(snap => {
+        setGameData(snap.exists ? snap.data : null);
+        setLoading(false);
+      });
+    })();
+    return () => unsub?.();
+  }, [gameId]);
+
+  if (loading) return (
+    <div style={{ minHeight: "100vh", background: "#0a0a1a", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: "'Bangers', cursive", fontSize: 28 }}>
+      ⏳ Chargement...
+    </div>
+  );
+
+  if (!gameData) return (
+    <div style={{ minHeight: "100vh", background: "#0a0a1a", display: "flex", alignItems: "center", justifyContent: "center", color: "#f44336", fontFamily: "'Bangers', cursive", fontSize: 24, textAlign: "center", padding: 24 }}>
+      ❌ Partie introuvable.<br/>Demande un nouveau lien à l'hôte.
+    </div>
+  );
+
+  const theme = THEMES[gameData.theme] || THEMES.dbz;
+  const player = gameData.roles?.[playerIndex];
+  const status = gameData.status;
+  const isEliminated = gameData.eliminated?.includes(playerIndex);
+
+  if (!player) return (
+    <div style={{ minHeight: "100vh", background: theme.bg, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontFamily: "'Bangers', cursive", fontSize: 24, textAlign: "center", padding: 24 }}>
+      ❌ Joueur introuvable.
+    </div>
+  );
+
+  return (
+    <div style={{ minHeight: "100vh", background: theme.bg, fontFamily: "'Bangers', cursive", color: "#fff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24, gap: 24 }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap'); @keyframes zoomIn{from{transform:scale(0.5);opacity:0;}to{transform:scale(1);opacity:1;}} .word-reveal{animation:zoomIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;}`}</style>
+
+      {/* Header */}
+      <div style={{ textAlign: "center" }}>
+        <div style={{ fontSize: 48, marginBottom: 4 }}>{theme.emoji}</div>
+        <div style={{ fontSize: 28, letterSpacing: 2, color: theme.accentText }}>{player.name}</div>
+        <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 12, letterSpacing: 2, textTransform: "uppercase" }}>Partie : {gameId}</div>
+      </div>
+
+      {/* Waiting */}
+      {status === "waiting" && (
+        <div style={{ background: "rgba(255,255,255,0.04)", border: \`1px solid \${theme.accent}30\`, borderRadius: 16, padding: 32, textAlign: "center", width: "100%" }}>
+          <div style={{ fontSize: 48, marginBottom: 12 }}>⏳</div>
+          <div style={{ fontSize: 24, color: theme.accentText, letterSpacing: 2 }}>En attente du démarrage...</div>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 14, marginTop: 8 }}>L'hôte va lancer la partie</div>
+        </div>
+      )}
+
+      {/* Playing */}
+      {(status === "playing" || status === "revealed") && (
+        <>
+          {isEliminated ? (
+            <div style={{ background: "rgba(244,67,54,0.1)", border: "2px solid #f44336", borderRadius: 16, padding: 32, textAlign: "center", width: "100%" }}>
+              <div style={{ fontSize: 64 }}>💀</div>
+              <div style={{ fontSize: 32, color: "#f44336", letterSpacing: 2 }}>ÉLIMINÉ</div>
+              {status === "revealed" && (
+                <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#aaa", fontSize: 15, marginTop: 12 }}>
+                  Tu étais : <span style={{ color: player.role === "undercover" ? "#f44336" : player.role === "mrwhite" ? "#ce93d8" : "#4caf50" }}>
+                    {player.role === "undercover" ? "🕵️ UNDERCOVER" : player.role === "mrwhite" ? "❓ MR. WHITE" : "✅ CIVIL"}
+                  </span>
+                  <br/>Mot : <span style={{ color: theme.accentText }}>{player.word}</span>
+                </div>
+              )}
+            </div>
+          ) : !wordRevealed ? (
+            <button onClick={() => setWordRevealed(true)} style={{ background: \`linear-gradient(135deg, \${theme.accent}, \${theme.accentAlt})\`, color: "#000", border: "none", padding: "20px 32px", fontSize: 24, fontFamily: "'Bangers', cursive", letterSpacing: 2, borderRadius: 8, cursor: "pointer", width: "100%", textTransform: "uppercase", boxShadow: \`0 0 20px \${theme.accent}50\` }}>
+              👁️ VOIR MON MOT
+            </button>
+          ) : (
+            <div className="word-reveal" style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
+              {player.role === "mrwhite" ? (
+                <div style={{ background: "linear-gradient(135deg, #1a1a4a, #2d2d8b)", border: "2px solid #9c27b0", borderRadius: 16, padding: 32, textAlign: "center" }}>
+                  <div style={{ fontSize: 48, marginBottom: 8 }}>❓</div>
+                  <div style={{ fontSize: 32, letterSpacing: 3, color: "#e1bee7", marginBottom: 4 }}>MR. WHITE</div>
+                  <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#ce93d8", fontSize: 14 }}>Tu ne sais rien... bluff !</div>
+                </div>
+              ) : (
+                <div style={{ background: "rgba(255,255,255,0.04)", border: \`2px solid \${theme.accent}60\`, borderRadius: 16, padding: 40, textAlign: "center" }}>
+                  <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#888", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>Ton mot secret</div>
+                  <div style={{ fontSize: 48, color: theme.accentText, letterSpacing: 2, fontWeight: "bold", textShadow: \`0 0 20px \${theme.accent}80\` }}>
+                    {player.word}
+                  </div>
+                </div>
+              )}
+              {status === "revealed" && (
+                <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: 16, textAlign: "center", fontFamily: "'Rajdhani', sans-serif" }}>
+                  <div style={{ color: "#888", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>Tu étais</div>
+                  <div style={{ fontSize: 18, color: player.role === "undercover" ? "#f44336" : player.role === "mrwhite" ? "#ce93d8" : "#4caf50" }}>
+                    {player.role === "undercover" ? "🕵️ UNDERCOVER" : player.role === "mrwhite" ? "❓ MR. WHITE" : "✅ CIVIL"}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Status indicator */}
+      <div style={{ fontFamily: "'Rajdhani', sans-serif", color: "#555", fontSize: 12, letterSpacing: 2, textAlign: "center", textTransform: "uppercase" }}>
+        {status === "waiting" ? "⏳ En attente" : status === "playing" ? "🎮 Partie en cours" : "🏁 Partie terminée"}
       </div>
     </div>
   );
@@ -1300,6 +1703,16 @@ const SERIES = {
 export default function App() {
   const [app, setApp] = useState("menu"); // "menu" | "undercover" | "auction"
 
+  // Check URL params for remote player mode
+  const params = new URLSearchParams(window.location.search);
+  const remoteGame = params.get("game");
+  const remotePlayer = params.get("player");
+
+  // If URL has game+player params, show player view directly
+  if (remoteGame && remotePlayer !== null) {
+    return <RemotePlayerScreen gameId={remoteGame} playerIndex={parseInt(remotePlayer)} />;
+  }
+
   if (app === "auction") return <AuctionApp onBack={() => setApp("menu")} />;
   if (app === "undercover") return <UndercoverApp onBack={() => setApp("menu")} />;
 
@@ -1353,7 +1766,7 @@ export default function App() {
         </p>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%", maxWidth: 400, zIndex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%", zIndex: 1 }}>
 
         {/* Undercover */}
         <div className="menu-card" style={{
@@ -1437,8 +1850,7 @@ function AuctionApp({ onBack }) {
       minHeight: "100vh", background: "linear-gradient(135deg, #000510 0%, #050a20 60%, #000510 100%)",
       fontFamily: "'Bangers', cursive", color: "#fff", padding: 24,
       display: "flex", flexDirection: "column", gap: 20, paddingTop: 48,
-      maxWidth: 430, margin: "0 auto",
-    }}>
+          }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap');
         @keyframes slideUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
@@ -1646,7 +2058,7 @@ function AuctionGame({ series, initialData, onEnd, onBack }) {
   // ── GAME OVER
   if (gameOver) {
     return (
-      <div style={{ minHeight: "100vh", background: series.bg, fontFamily: "'Bangers', cursive", color: "#fff", padding: 24, maxWidth: 430, margin: "0 auto" }}>
+      <div style={{ minHeight: "100vh", background: series.bg, fontFamily: "'Bangers', cursive", color: "#fff", padding: 24 }}>
         <style>{`@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap'); @keyframes slideUp { from { transform:translateY(30px);opacity:0; } to { transform:translateY(0);opacity:1; } } .acard{background:rgba(255,255,255,0.04);border-radius:16px;padding:20px;backdrop-filter:blur(10px);animation:slideUp 0.4s ease forwards;}`}</style>
         <div style={{ paddingTop: 40, display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ textAlign: "center" }}>
@@ -1679,7 +2091,7 @@ function AuctionGame({ series, initialData, onEnd, onBack }) {
 
   // ── MAIN GAME UI
   return (
-    <div style={{ minHeight: "100vh", background: series.bg, fontFamily: "'Bangers', cursive", color: "#fff", maxWidth: 430, margin: "0 auto" }}>
+    <div style={{ minHeight: "100vh", background: series.bg, fontFamily: "'Bangers', cursive", color: "#fff" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap');
         @keyframes slideUp { from { transform:translateY(30px);opacity:0; } to { transform:translateY(0);opacity:1; } }
