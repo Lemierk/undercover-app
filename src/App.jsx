@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { getDb } from "./supabase";
 
 // ═══════════════════════════════════════════════════════
 // UNDERCOVER — THÈMES & COMPOSANTS
@@ -740,7 +741,7 @@ function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack 
   async function createGame() {
     setCreating(true);
     try {
-      const db = await claude.use("db");
+      const db = await getDb();
       if (!db) { alert("Service indisponible"); setCreating(false); return; }
 
       const pair = t.pairs[Math.floor(Math.random() * t.pairs.length)];
@@ -856,7 +857,7 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
   useEffect(() => {
     let unsub;
     (async () => {
-      const db = await claude.use("db");
+      const db = await getDb();
       if (!db) return;
       unsub = db.doc(`games/${gameId}`).onSnapshot(snap => {
         if (snap.exists) setGameData(snap.data);
@@ -866,19 +867,19 @@ function RemoteHostScreen({ gameId, gameLinks, theme, onBack }) {
   }, [gameId]);
 
   async function startGame() {
-    const db = await claude.use("db");
+    const db = await getDb();
     await db.doc(`games/${gameId}`).update({ status: "playing" });
   }
 
   async function toggleEliminate(i) {
-    const db = await claude.use("db");
+    const db = await getDb();
     const current = gameData?.eliminated || [];
     const next = current.includes(i) ? current.filter(x => x !== i) : [...current, i];
     await db.doc(`games/${gameId}`).update({ eliminated: next });
   }
 
   async function revealRoles() {
-    const db = await claude.use("db");
+    const db = await getDb();
     await db.doc(`games/${gameId}`).update({ status: "revealed" });
     setShowRoles(true);
     setConfirmReveal(false);
@@ -1019,7 +1020,7 @@ function RemotePlayerScreen({ gameId, playerIndex }) {
   useEffect(() => {
     let unsub;
     (async () => {
-      const db = await claude.use("db");
+      const db = await getDb();
       if (!db) { setLoading(false); return; }
       unsub = db.doc(`games/${gameId}`).onSnapshot(snap => {
         setGameData(snap.exists ? snap.data : null);
