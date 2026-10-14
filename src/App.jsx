@@ -777,7 +777,7 @@ function RemoteSetupScreen({ theme, selectedThemeId, setSelectedThemeId, onBack 
       setGameLinks(links);
     } catch(e) {
       console.error(e);
-      alert("Erreur lors de la création");
+      alert("Erreur lors de la création : " + (e?.message || e?.details || JSON.stringify(e)));
     }
     setCreating(false);
   }
