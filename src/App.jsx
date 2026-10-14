@@ -1533,7 +1533,7 @@ function PlayScreen({ theme, players, onRestart, onNewGame }) {
               transition: "all 0.2s",
               opacity: isOut ? 0.35 : 1, filter: isOut ? "grayscale(1)" : "none",
             }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+              <div
                 onClick={() => !showRoles && (isOut
                   ? setEliminated(prev => prev.filter(x => x !== i))
                   : setEliminated(prev => [...prev, i])
